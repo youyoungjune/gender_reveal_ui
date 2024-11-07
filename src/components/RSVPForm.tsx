@@ -8,10 +8,7 @@ import { Button } from "@/components/ui/button";
 export const RSVPForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
   return (
-    <>
-      <p className="flex justify-center font-semibold italic text-center text-3xl">
-        We invite you to our gender reveal party!
-      </p>
+    <div className="p-4 space-y-4">
       <Input placeholder="First and Last Name" />
       <div className="relative">
         <Input
@@ -33,6 +30,6 @@ export const RSVPForm = () => {
       <Button className="w-full bg-violet-950 hover:bg-violet-900">
         Enter
       </Button>
-    </>
+    </div>
   );
 };
