@@ -109,27 +109,27 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
                   >
                     <SelectTrigger
                       title="Change RSVP"
-                      className="flex justify-center font-semibold border-[#954f36] text-[#954f36] bg-[#f6e6d4] hover:bg-[#fef6ed]"
+                      className="flex justify-center font-semibold text-[#954f36] bg-[#fef6ed] hover:bg-[#f6e6d4]"
                     >
                       Your RSVP is: {newRsvp === "" ? rsvps?.rsvp : newRsvp}
                     </SelectTrigger>
-                    <SelectContent className="w-[25.9rem] bg-[#f6e6d4] border-[#954f36] rounded-md">
+                    <SelectContent className="w-[25.9rem] bg-[#fef6ed] border-[#954f36] rounded-md">
                       <SelectItem
-                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#fef6ed]"
+                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#f6e6d4]"
                         value="Yes"
                         disabled={rsvps?.rsvp === "Yes" ? true : false}
                       >
                         Yes
                       </SelectItem>
                       <SelectItem
-                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#fef6ed]"
+                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#f6e6d4]"
                         value="Virtual"
                         disabled={rsvps?.rsvp === "Virtual" ? true : false}
                       >
                         Yes, virtually
                       </SelectItem>
                       <SelectItem
-                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#fef6ed]"
+                        className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#f6e6d4]"
                         value="No"
                         disabled={rsvps?.rsvp === "No" ? true : false}
                       >
@@ -194,9 +194,22 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
           </Form>
         </div>
       ) : rsvps?.rsvp === "Virtual" ? (
-        <a href="https://cayuga-cc-edu.zoom.us/j/9302098328" target="_blank">
-          <Button className="w-full mt-2">Zoom Link</Button>
-        </a>
+        <div className="flex flex-col items-center space-y-2 w-full">
+          <a
+            href="https://cayuga-cc-edu.zoom.us/j/9302098328"
+            target="_blank"
+            className="w-full"
+          >
+            <Button className="w-full">Zoom Link</Button>
+          </a>
+          <a
+            href="https://cayuga-cc-edu.zoom.us/j/9302098328"
+            target="_blank"
+            className="flex text-xs hover:underline w-fit text-[#954f36]"
+          >
+            https://cayuga-cc-edu.zoom.us/j/9302098328
+          </a>
+        </div>
       ) : null}
     </div>
   ) : (
