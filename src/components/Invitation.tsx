@@ -11,7 +11,10 @@ export const Invitation = () => {
   return session.status === "authenticated" ? (
     <div className="flex flex-col space-y-2">
       <Card className="w-[28rem] bg-[#f6e6d4]">
-        <img src="https://utfs.io/f/AR95GDbqfmiLgKuxCRAMTV2AB0J5N6Ct9dKa3jseqzGhpR17" />
+        <img
+          alt="Invitation"
+          src="https://utfs.io/f/AR95GDbqfmiLgKuxCRAMTV2AB0J5N6Ct9dKa3jseqzGhpR17"
+        />
         <RSVPForm />
       </Card>
       <div className="flex justify-between">
@@ -28,7 +31,10 @@ export const Invitation = () => {
   ) : (
     <div className="flex flex-col space-y-2">
       <Card className="w-[28rem] bg-[#f6e6d4]">
-        <img src="https://utfs.io/f/AR95GDbqfmiL67vj7DaxG5jmiqyXaIwh1Y2ZnsMOocBEUFkp" />
+        <img
+          alt="Invitation"
+          src="https://utfs.io/f/AR95GDbqfmiL67vj7DaxG5jmiqyXaIwh1Y2ZnsMOocBEUFkp"
+        />
         <LoginForm />
       </Card>
       <p className="text-xs text-[#bad5c6]">developed by dataonlock.</p>

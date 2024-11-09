@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getGrpApiHttpClient } from "@/lib/grp-api-http-client";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
@@ -13,7 +15,7 @@ export const authOptions: NextAuthOptions = {
         CredentialsProvider({
             id: "credentials",
             name: "Credentials",
-            async authorize(credentials: any, req) {
+            async authorize(credentials: any) {
                 try {
                     const client = getGrpApiHttpClient();
 
@@ -39,7 +41,7 @@ export const authOptions: NextAuthOptions = {
         }),
     ],
     callbacks: {
-        async session({ session, token, user }) {
+        async session({ session, token }) {
             session.user.name = token.name as string;
             session.user.inviteeId = token.inviteeId as string;
             session.accessToken = token.accessToken as string;
