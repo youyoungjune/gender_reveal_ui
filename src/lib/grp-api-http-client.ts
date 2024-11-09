@@ -5,13 +5,13 @@ interface LoginPayload {
     password: string;
 }
 
-// interface RsvpPayload {
-//     rsvp: string;
-// }
+interface RsvpPayload {
+    rsvp: string;
+}
 
-// interface GuestPayload {
-//     guests: string;
-// }
+interface GuestPayload {
+    guests: string;
+}
 
 export const getGrpApiHttpClient = (accessToken?: string) => {
     const instance: AxiosInstance = axios.create({
@@ -36,6 +36,66 @@ class GrpApiHttpClient {
                 throw new Error(e);
             });
 
+        return response;
+    }
+
+    public async createRsvp(payload: RsvpPayload) {
+        const response = await this.client
+            .post("/api/v1/rsvp/create/auth", payload)
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response;
+    }
+
+    public async getRsvp() {
+        const response = await this.client
+            .get("/api/v1/rsvp/auth")
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response?.data;
+    }
+
+    public async putRsvp(payload: RsvpPayload) {
+        const response = await this.client
+            .put("/api/v1/rsvp/update/auth", payload)
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response;
+    }
+
+    public async createGuests(payload: GuestPayload) {
+        const response = await this.client
+            .post("/api/v1/guests/create/auth", payload)
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response;
+    }
+
+    public async getGuests() {
+        const response = await this.client
+            .get("/api/v1/guests/auth")
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response?.data;
+    }
+
+    public async putGuests(payload: GuestPayload) {
+        const response = await this.client
+            .put("/api/v1/guests/update/auth", payload)
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
         return response;
     }
 }
