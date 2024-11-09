@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { getGrpApiHttpClient } from "@/lib/grp-api-http-client";
 import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";

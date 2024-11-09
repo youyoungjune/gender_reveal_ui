@@ -173,7 +173,7 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
                         placeholder={
                           guests?.guests === ""
                             ? "(Optional) Please write the name of your guests."
-                            : guests?.guests
+                            : "Your guests: " + guests?.guests
                         }
                         className="text-[#954f36] bg-[#fef6ed] italic"
                         {...field}
@@ -184,7 +184,11 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
                 )}
               />
               <Button type="submit" className="w-full">
-                Submit Guests
+                {guests?.guests === "" ? (
+                  <p>Submit Guests</p>
+                ) : (
+                  <p>Update Guest List</p>
+                )}
               </Button>
             </form>
           </Form>
