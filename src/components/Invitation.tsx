@@ -24,7 +24,23 @@ export const Invitation = () => {
         <RSVPForm rsvps={rsvps?.rsvp} guests={guests?.guests} />
       </Card>
       <div className="flex justify-between">
-        <p className="text-xs text-[#bad5c6]">developed by dataonlock.</p>
+        <p className="text-xs text-[#bad5c6]">
+          <a
+            href="https://github.com/jamesdavidyu/gender_reveal_ui"
+            className="text-xs text-[#bad5c6] hover:underline"
+            target="_blank"
+          >
+            developed
+          </a>{" "}
+          by{" "}
+          <a
+            href="https://github.com/jamesdavidyu/gender_reveal_service"
+            className="text-xs text-[#bad5c6] hover:underline"
+            target="_blank"
+          >
+            dataonlock.
+          </a>
+        </p>
         <Button
           className="w-fit"
           variant="destructive"
@@ -43,7 +59,23 @@ export const Invitation = () => {
         />
         <LoginForm />
       </Card>
-      <p className="text-xs text-[#bad5c6]">developed by dataonlock.</p>
+      <p className="text-xs text-[#bad5c6]">
+        <a
+          href="https://github.com/jamesdavidyu/gender_reveal_ui"
+          className="text-xs text-[#bad5c6] hover:underline"
+          target="_blank"
+        >
+          developed
+        </a>{" "}
+        by{" "}
+        <a
+          href="https://github.com/jamesdavidyu/gender_reveal_service"
+          className="text-xs text-[#bad5c6] hover:underline"
+          target="_blank"
+        >
+          dataonlock.
+        </a>
+      </p>
     </div>
   );
 };

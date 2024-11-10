@@ -4,6 +4,14 @@ import { getGrpApiHttpClient } from "@/lib/grp-api-http-client";
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+interface Credentials {
+    id: string,
+    name: string,
+    inviteeId: string,
+    accessToken: string,
+    password: string,
+}
+
 const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     session: {
@@ -15,25 +23,35 @@ const authOptions: NextAuthOptions = {
         CredentialsProvider({
             id: "credentials",
             name: "Credentials",
-            async authorize(credentials: any) {
+            credentials: {
+                name: { label: "Name", type: "text" },
+                password: { label: "Password", type: "password"},
+            },
+            async authorize(credentials) {
                 try {
                     const client = getGrpApiHttpClient();
 
-                    const loginResponse = await client.loginUser({
-                        name: credentials.name,
-                        password: credentials.password,
-                    });
+                    if (credentials) {
+                            const loginResponse = await client.loginUser({
+                            name: credentials.name,
+                            password: credentials.password,
+                        });
 
-                    if (loginResponse.status > 300) {
-                        return null;
-                    }
-                    const { data } = loginResponse;
+                        if (loginResponse.status > 300) {
+                            return null;
+                        }
+                        const { data } = loginResponse;
 
-                    return {
-                        name: data.name,
-                        inviteeId: data.inviteeId,
-                        accessToken: loginResponse.data.token,
+                        return {
+                            id: data.inviteeId,
+                            name: data.name,
+                            inviteeId: data.inviteeId,
+                            accessToken: loginResponse.data.token,
+                        };
                     };
+
+                    return null;
+
                 } catch (e) {
                     return null;
                 }

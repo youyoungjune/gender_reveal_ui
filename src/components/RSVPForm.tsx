@@ -202,13 +202,18 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
           >
             <Button className="w-full">Zoom Link</Button>
           </a>
-          <a
-            href="https://cayuga-cc-edu.zoom.us/j/9302098328"
-            target="_blank"
-            className="flex text-xs hover:underline w-fit text-[#954f36]"
-          >
-            https://cayuga-cc-edu.zoom.us/j/9302098328
-          </a>
+          <div className="flex flex-col w-full items-center">
+            <p className="flex font-bold text-sm w-fit text-[#954f36]">
+              Save the Link!&nbsp;
+            </p>
+            <a
+              href="https://cayuga-cc-edu.zoom.us/j/9302098328"
+              target="_blank"
+              className="flex text-sm hover:underline w-fit text-[#954f36]"
+            >
+              https://cayuga-cc-edu.zoom.us/j/9302098328
+            </a>
+          </div>
         </div>
       ) : null}
     </div>
