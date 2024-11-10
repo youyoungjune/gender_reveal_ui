@@ -113,7 +113,7 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
                     >
                       Your RSVP is: {newRsvp === "" ? rsvps?.rsvp : newRsvp}
                     </SelectTrigger>
-                    <SelectContent className="w-96 sm:w-[25.9rem] bg-[#fef6ed] border-[#954f36] rounded-md">
+                    <SelectContent className="w-72 sm:w-[25.9rem] bg-[#fef6ed] border-[#954f36] rounded-md">
                       <SelectItem
                         className="flex justify-center text-[#954f36] focus:text-[#954f36] font-semibold focus:bg-[#f6e6d4]"
                         value="Yes"
@@ -209,7 +209,7 @@ export const RSVPForm = ({ rsvps, guests }: RsvpFormProps) => {
             <a
               href="https://cayuga-cc-edu.zoom.us/j/9302098328"
               target="_blank"
-              className="flex text-sm hover:underline w-fit text-[#954f36]"
+              className="flex text-xs sm:text-sm hover:underline w-fit text-[#954f36]"
             >
               https://cayuga-cc-edu.zoom.us/j/9302098328
             </a>
