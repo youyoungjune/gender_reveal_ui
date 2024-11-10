@@ -3,7 +3,7 @@
 
 import { Input } from "@/components/ui/input";
 import { EyeClosedIcon, EyeIcon } from "lucide-react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { useForm } from "react-hook-form";
 import { loginFormSchema, LoginValidationSchemaType } from "@/types/types";
@@ -11,9 +11,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "./ui/form";
 import { toast } from "react-toastify";
 import { signIn } from "next-auth/react";
+import { ColorRing } from "react-loader-spinner";
 
 export const LoginForm = () => {
   const [visiblePassword, setVisiblePassword] = useState(false);
+  const [click, setClick] = useState(false);
 
   const form = useForm<LoginValidationSchemaType>({
     resolver: zodResolver(loginFormSchema),
@@ -21,6 +23,11 @@ export const LoginForm = () => {
       name: "",
       password: "",
     },
+  });
+
+  useEffect(() => {
+    const timer = setTimeout(() => setClick(false), 2000);
+    return () => clearTimeout(timer);
   });
 
   const handleLogin = useCallback(
@@ -97,8 +104,9 @@ export const LoginForm = () => {
           <Button
             type="submit"
             className="w-full bg-[#bed0d8] hover:bg-[#bad5c6] text-[#fef6ed]"
+            onClick={() => setClick(true)}
           >
-            Enter
+            {click ? <ColorRing /> : <p>Enter</p>}
           </Button>
         </form>
       </Form>
