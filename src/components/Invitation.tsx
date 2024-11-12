@@ -7,12 +7,22 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { useRsvp } from "@/hooks/useRsvp";
 import { useGuests } from "@/hooks/useGuests";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
+import { useDashboard } from "@/hooks/useDashboard";
+
+interface Dashboard {
+  id: string;
+  name: string;
+  rsvp: string;
+  guests: string;
+}
 
 export const Invitation = () => {
   const session = useSession();
 
   const { rsvps } = useRsvp();
   const { guests } = useGuests();
+  const { dashboards } = useDashboard();
 
   return session.status === "authenticated" ? (
     <div className="flex flex-col space-y-2">
@@ -41,13 +51,67 @@ export const Invitation = () => {
             dataonlock.
           </a>
         </p>
-        <Button
-          className="w-fit"
-          variant="destructive"
-          onClick={() => signOut({ callbackUrl: "/" })}
-        >
-          Sign Out
-        </Button>
+
+        <div className="space-x-1">
+          {session.data.user.name === "James Yu" ||
+          session.data.user.name === "Hanna Lee" ? (
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button>Dashboard</Button>
+              </PopoverTrigger>
+              <PopoverContent className="bg-[#f6e6d4] text-[#954f36] w-fit overflow-y-auto h-96">
+                <div className="grid grid-cols-3">
+                  <div className="border-r border-[#954f36]">
+                    <p className="flex justify-center border-b border-[#954f36]">
+                      Name
+                    </p>
+                    {dashboards.dashboard?.map((dashboard: Dashboard) => (
+                      <p
+                        key={dashboard.id}
+                        className="border-b border-[#954f36] p-2"
+                      >
+                        {dashboard.name}
+                      </p>
+                    ))}
+                  </div>
+                  <div className="border-r border-[#954f36]">
+                    <p className="flex justify-center border-b border-[#954f36]">
+                      RSVP
+                    </p>
+                    {dashboards.dashboard?.map((dashboard: Dashboard) => (
+                      <p
+                        key={dashboard.id}
+                        className="border-b border-[#954f36] p-2"
+                      >
+                        {dashboard.rsvp}
+                      </p>
+                    ))}
+                  </div>
+                  <div>
+                    <p className="flex justify-center border-b border-[#954f36]">
+                      Guests
+                    </p>
+                    {dashboards.dashboard?.map((dashboard: Dashboard) => (
+                      <p
+                        key={dashboard.id}
+                        className="border-b border-[#954f36] p-2 text-wrap"
+                      >
+                        {dashboard.guests}
+                      </p>
+                    ))}
+                  </div>
+                </div>
+              </PopoverContent>
+            </Popover>
+          ) : null}
+          <Button
+            className="w-fit"
+            variant="destructive"
+            onClick={() => signOut({ callbackUrl: "/" })}
+          >
+            Sign Out
+          </Button>
+        </div>
       </div>
     </div>
   ) : (

@@ -98,4 +98,14 @@ class GrpApiHttpClient {
         
         return response;
     }
+
+    public async getDashboard() {
+        const response = await this.client
+            .get("/api/v1/dashboard/auth")
+            .catch((e) => {
+                throw new Error(e);
+            });
+        
+        return response?.data
+    }
 }
