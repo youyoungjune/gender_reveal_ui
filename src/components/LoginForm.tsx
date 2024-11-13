@@ -62,7 +62,7 @@ export const LoginForm = () => {
               <FormItem>
                 <FormControl>
                   <Input
-                    placeholder="First and Last Name"
+                    placeholder="Your First and Last Name"
                     className="text-[#954f36] bg-[#fef6ed]"
                     {...field}
                   />
