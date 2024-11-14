@@ -34,10 +34,7 @@ export const Invitation = () => {
   return session.status === "authenticated" ? (
     <div className="flex flex-col space-y-2">
       <Card className="w-80 sm:w-[28rem] bg-[#f6e6d4]">
-        <img
-          alt="Invitation"
-          src="https://utfs.io/f/AR95GDbqfmiLgKuxCRAMTV2AB0J5N6Ct9dKa3jseqzGhpR17"
-        />
+        <img alt="Invitation" src={process.env.AUTH_IMG} />
         <RSVPForm rsvps={rsvps?.rsvp} guests={guests?.guests} />
       </Card>
       <div className="flex justify-between">
@@ -65,7 +62,7 @@ export const Invitation = () => {
               <DialogTrigger asChild>
                 <Button>Dashboard</Button>
               </DialogTrigger>
-              <DialogContent className="bg-[#f6e6d4] text-[#954f36] overflow-y-auto h-96">
+              <DialogContent className="bg-[#f6e6d4] text-[#954f36] overflow-y-auto h-96 text-xs sm:w-fit">
                 <DialogHeader>
                   <DialogTitle>Dashboard</DialogTitle>
                   <DialogDescription className="text-[#954f36]">
@@ -129,10 +126,7 @@ export const Invitation = () => {
   ) : (
     <div className="flex flex-col space-y-2">
       <Card className="w-80 sm:w-[28rem] bg-[#f6e6d4]">
-        <img
-          alt="Invitation"
-          src="https://utfs.io/f/AR95GDbqfmiL67vj7DaxG5jmiqyXaIwh1Y2ZnsMOocBEUFkp"
-        />
+        <img alt="Invitation" src={process.env.UNAUTH_IMG} />
         <LoginForm />
       </Card>
       <p className="text-xs text-[#bad5c6]">
