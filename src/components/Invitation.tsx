@@ -7,8 +7,15 @@ import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { useRsvp } from "@/hooks/useRsvp";
 import { useGuests } from "@/hooks/useGuests";
-import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 import { useDashboard } from "@/hooks/useDashboard";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "./ui/dialog";
 
 interface Dashboard {
   id: string;
@@ -34,7 +41,7 @@ export const Invitation = () => {
         <RSVPForm rsvps={rsvps?.rsvp} guests={guests?.guests} />
       </Card>
       <div className="flex justify-between">
-        <p className="text-xs text-[#bad5c6]">
+        <p className="text-xs text-[#bad5c6] text-wrap">
           <a
             href="https://github.com/jamesdavidyu/gender_reveal_ui"
             className="text-xs text-[#bad5c6] hover:underline"
@@ -51,15 +58,20 @@ export const Invitation = () => {
             dataonlock.
           </a>
         </p>
-
         <div className="space-x-1">
-          {session.data.user.name === "James Yu" ||
-          session.data.user.name === "Hanna Lee" ? (
-            <Popover>
-              <PopoverTrigger asChild>
+          {session.data.user.name === "jamesyungjun" ||
+          session.data.user.name === "leehaeun29" ? (
+            <Dialog>
+              <DialogTrigger asChild>
                 <Button>Dashboard</Button>
-              </PopoverTrigger>
-              <PopoverContent className="bg-[#f6e6d4] text-[#954f36] w-fit overflow-y-auto h-96">
+              </DialogTrigger>
+              <DialogContent className="bg-[#f6e6d4] text-[#954f36] overflow-y-auto h-96">
+                <DialogHeader>
+                  <DialogTitle>Dashboard</DialogTitle>
+                  <DialogDescription className="text-[#954f36]">
+                    Invitees who have RSVPd.
+                  </DialogDescription>
+                </DialogHeader>
                 <div className="grid grid-cols-3">
                   <div className="border-r border-[#954f36]">
                     <p className="flex justify-center border-b border-[#954f36]">
@@ -94,15 +106,15 @@ export const Invitation = () => {
                     {dashboards.dashboard?.map((dashboard: Dashboard) => (
                       <p
                         key={dashboard.id}
-                        className="border-b border-[#954f36] p-2 text-wrap"
+                        className="border-b border-[#954f36] p-2"
                       >
                         {dashboard.guests}
                       </p>
                     ))}
                   </div>
                 </div>
-              </PopoverContent>
-            </Popover>
+              </DialogContent>
+            </Dialog>
           ) : null}
           <Button
             className="w-fit"
