@@ -38,7 +38,7 @@ export const Invitation = () => {
         <RSVPForm rsvps={rsvps?.rsvp} guests={guests?.guests} />
       </Card>
       <div className="flex justify-between">
-        <p className="text-xs text-[#bad5c6] text-wrap">
+        <p className="text-xs text-[#bad5c6]">
           <a
             href="https://github.com/jamesdavidyu/gender_reveal_ui"
             className="text-xs text-[#bad5c6] hover:underline"
@@ -47,6 +47,14 @@ export const Invitation = () => {
             developed
           </a>{" "}
           by{" "}
+          <br
+            className={
+              session.data.user.name === process.env.NEXT_PUBLIC_ADMIN1 ||
+              session.data.user.name === process.env.NEXT_PUBLIC_ADMIN2
+                ? "block sm:hidden"
+                : "hidden"
+            }
+          />
           <a
             href="https://github.com/jamesdavidyu/gender_reveal_service"
             className="text-xs text-[#bad5c6] hover:underline"
@@ -78,8 +86,11 @@ export const Invitation = () => {
                       <p
                         key={dashboard.id}
                         className="border-b border-[#954f36] p-2"
+                        title={dashboard.name}
                       >
-                        {dashboard.name}
+                        {dashboard.name.length > 15
+                          ? dashboard.name.substring(0, 15) + "..."
+                          : dashboard.name}
                       </p>
                     ))}
                   </div>
@@ -104,8 +115,11 @@ export const Invitation = () => {
                       <p
                         key={dashboard.id}
                         className="border-b border-[#954f36] p-2"
+                        title={dashboard.guests}
                       >
-                        {dashboard.guests}
+                        {dashboard.guests.length > 15
+                          ? dashboard.guests.substring(0, 15) + "..."
+                          : dashboard.guests}
                       </p>
                     ))}
                   </div>
