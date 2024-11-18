@@ -16,6 +16,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "./ui/popover";
 
 interface Dashboard {
   id: string;
@@ -83,15 +84,16 @@ export const Invitation = () => {
                       Name
                     </p>
                     {dashboards.dashboard?.map((dashboard: Dashboard) => (
-                      <p
-                        key={dashboard.id}
-                        className="border-b border-[#954f36] p-2"
-                        title={dashboard.name}
-                      >
-                        {dashboard.name.length > 15
-                          ? dashboard.name.substring(0, 15) + "..."
-                          : dashboard.name}
-                      </p>
+                      <Popover key={dashboard.id}>
+                        <PopoverTrigger className="border-b border-[#954f36] p-2 flex flex-col w-full">
+                          {dashboard.name.length > 14
+                            ? dashboard.name.substring(0, 14) + "..."
+                            : dashboard.name}
+                        </PopoverTrigger>
+                        <PopoverContent className="bg-[#f6e6d4] text-[#954f36] text-xs w-fit">
+                          {dashboard.name}
+                        </PopoverContent>
+                      </Popover>
                     ))}
                   </div>
                   <div className="border-r border-[#954f36]">
@@ -112,15 +114,16 @@ export const Invitation = () => {
                       Guests
                     </p>
                     {dashboards.dashboard?.map((dashboard: Dashboard) => (
-                      <p
-                        key={dashboard.id}
-                        className="border-b border-[#954f36] p-2"
-                        title={dashboard.guests}
-                      >
-                        {dashboard.guests.length > 15
-                          ? dashboard.guests.substring(0, 15) + "..."
-                          : dashboard.guests}
-                      </p>
+                      <Popover key={dashboard.id}>
+                        <PopoverTrigger className="border-b border-[#954f36] p-2 flex flex-col w-full">
+                          {dashboard.guests.length > 15
+                            ? dashboard.guests.substring(0, 15) + "..."
+                            : dashboard.guests}
+                        </PopoverTrigger>
+                        <PopoverContent className="bg-[#f6e6d4] text-[#954f36] text-xs w-fit">
+                          {dashboard.guests}
+                        </PopoverContent>
+                      </Popover>
                     ))}
                   </div>
                 </div>
