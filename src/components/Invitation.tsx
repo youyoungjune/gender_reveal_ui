@@ -61,7 +61,7 @@ export const Invitation = () => {
             className="text-xs text-[#bad5c6] hover:underline"
             target="_blank"
           >
-            dataonlock.
+            planorban.
           </a>
         </p>
         <div className="space-x-1">
@@ -163,7 +163,7 @@ export const Invitation = () => {
           className="text-xs text-[#bad5c6] hover:underline"
           target="_blank"
         >
-          dataonlock.
+          planorban.
         </a>
       </p>
     </div>

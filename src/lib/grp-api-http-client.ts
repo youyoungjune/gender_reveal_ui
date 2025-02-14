@@ -23,8 +23,8 @@ export const getGrpApiHttpClient = (accessToken?: string) => {
     });
     const client = new GrpApiHttpClient(instance);
 
-    return client
-}
+    return client;
+};
 
 class GrpApiHttpClient {
     constructor(private client: AxiosInstance) {}
@@ -97,7 +97,7 @@ class GrpApiHttpClient {
             });
         
         return response;
-    }
+    };
 
     public async getDashboard() {
         const response = await this.client
@@ -106,6 +106,6 @@ class GrpApiHttpClient {
                 throw new Error(e);
             });
         
-        return response?.data
-    }
+        return response?.data;
+    };
 }
