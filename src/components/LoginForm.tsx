@@ -104,7 +104,10 @@ export const LoginForm = () => {
           <Button
             type="submit"
             className="w-full bg-[#bed0d8] hover:bg-[#bad5c6] text-[#fef6ed]"
-            onClick={() => setClick(true)}
+            onClick={() => {
+              console.log("test click");
+              setClick(true);
+            }}
           >
             {click ? <ColorRing /> : <p>Enter</p>}
           </Button>
