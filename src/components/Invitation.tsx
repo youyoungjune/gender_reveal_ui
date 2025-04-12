@@ -154,6 +154,7 @@ export const Invitation = () => {
           href="https://github.com/jamesdavidyu/gender_reveal_ui"
           className="text-xs text-[#bad5c6] hover:underline"
           target="_blank"
+          data-testid="developed-link"
         >
           developed
         </a>{" "}
